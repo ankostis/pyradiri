@@ -1,0 +1,60 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+decription: A CRUD application for hierarchical folder metadata based on a JSON-schema & YAML.
+title: pyradiri
+type: array
+items:
+    type: object
+    properties:
+        vehicle:
+            type: string
+        experiment:
+            type: string
+        lab:
+            enum: [ VELA-2, VELA-3, VELA-4, pems ]
+        date:
+            type: string
+            format: date-time
+        hour start:
+            type: string
+        hour end:
+            type: string
+        cycle:
+            type: string
+        cycle condition:
+            type: string
+        oil temperature:
+            type: string
+        cell temperature:
+            type: [integer, 'null']
+        RLs:
+            type: string
+        comments:
+            type: string
+        DYNOstorage:
+            type: string
+        Currentstorage:
+            type: string
+        OBDstorage:
+            type: string
+        FDIRstorage:
+            type: string
+    required: [vehicle, lab, date, ]
+
+
+
+definitions:
+    positiveInteger:
+        type: integer
+        minimum: 0
+        exclusiveMinimum: True
+    positiveNumber:
+        type: number
+        minimum: 0
+        exclusiveMinimum: True
+    positiveIntegers:
+        type: array
+        items:  '$ref: #/definitions/positiveInteger'
+    positiveNumbers:
+        type: array
+        items:  '$ref: #/definitions/positiveNumber'
+
